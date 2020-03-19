@@ -30,6 +30,9 @@
 <!-- <script src="../vendor/light-bootstrap/assets/js/light-bootstrap-dashboard.js?v=2.0.0" type="text/javascript"></script> -->
 <!-- datatables -->
 <script src="../vendor/datatables/datatables.min.js"></script>
+<script src="../vendor/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
+<script src="../vendor/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="../vendor/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <script>
     $(function(){
 
@@ -38,17 +41,19 @@
             "processing" : true,
             "ajax" : "../proses/kategori/get_all_kategori.php",
             "columns" : [
-                {data : "kd_kategori"},
-                {data : "nm_kategori"},
-                {
-                    data : "kd_kategori",
-                    "render" : function(data, type, full){
-                        var el = `<a class="btn btn-warning btn-fill edit-kategori" href='#modal-kategori' data-toggle="modal" data-id=`+data+`>` + `Ubah` + `</a> &nbsp;`;
-                            el += `<a class="btn btn-danger btn-fill hapus-kategori" href=../proses/kategori/delete_kategori.php?kd=` + data + `>` + `Hapus` + `</a>`;
-                        return el;
-                    }
+            {data : "kd_kategori"},
+            {data : "nm_kategori"},
+            {
+                data : "kd_kategori",
+                "render" : function(data, type, full){
+                    var el = `<a class="btn btn-warning btn-fill edit-kategori" href='#modal-kategori' data-toggle="modal" data-id=` + data + `>` + `Ubah` + `</a> &nbsp;`;
+                    el += `<a class="btn btn-danger btn-fill hapus-kategori" href=../proses/kategori/delete_kategori.php?kd=` + data + `>` + `Hapus` + `</a>`;
+                    return el;
                 }
-            ]
+            }
+            ],
+            dom: 'Bfrtip',
+            buttons: ['copyHtml5','excelHtml5','csvHtml5','pdfHtml5']
         })
 
         function hapus(page, url_ajax, msg){
@@ -78,13 +83,13 @@
         var url = $(this).attr('href')
         console.log(url)
         hapus('kategori', url, 'deleted')
-      })
+    })
 
       $('.tambah-kategori').click(function(){
         $('.modal-title').text('Tambah Data')
         $('.nm_kategori').val('')
         $('.form-kategori').attr('../proses/kategori/add_kategori.php')
-      })
+    })
 
       $(document).on('click', '.edit-kategori', function(){
         var kd = $(this).data('id')
@@ -99,7 +104,7 @@
                 $('.kd_kategori').val(data.kd_kategori)
             }
         })
-      })
+    })
 
   })
 </script>
