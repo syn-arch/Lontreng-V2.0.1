@@ -1,48 +1,20 @@
-<?php if (isset($_GET['msg'])): ?>
-    <?php $msg = $_GET['msg'] ?>
-    <?php if ($msg == 'added'): ?>
-        <script>
-            Swal.fire({
-              icon: 'success',
-              title: 'Data berhasil ditambahkan!',
-              showConfirmButton: false,
-              timer: 1500
-          })
-      </script>
-  <?php endif ?>
-  <?php if ($msg == 'updated'): ?>
-    <script>
-        Swal.fire({
-          icon: 'success',
-          title: 'Data berhasil diubah!',
-          showConfirmButton: false,
-          timer: 1500
-      })
-  </script>
-<?php endif ?>
-<?php if ($msg == 'deleted'): ?>
-    <script>
-        Swal.fire({
-          icon: 'success',
-          title: 'Data berhasil dihapus!',
-          showConfirmButton: false,
-          timer: 1500
-      })
-  </script>
-<?php endif ?>
-<?php endif ?>
+<?php require '../assets/component/alert.php'; ?>
 
 <div class="row">
     <div class="col-md-12">
         <div class="card strpied-tabled-with-hover">
             <div class="card-header ">
                 <h4 class="card-title pull-left">Data Kategori</h4>
-                <a href="#modal-kategori" data-toggle="modal" class="tambah-kategori btn btn-primary btn-fill pull-right">Tambah Kategori</a>
+                <div class="pull-right">
+                <a href="../proses/kategori/mass_delete.php" class="mass-hapus-kategori btn btn-danger btn-fill">Hapus Kategori</a>
+                <a href="#modal-kategori" data-toggle="modal" class="tambah-kategori btn btn-primary btn-fill">Tambah Kategori</a>
+                </div>
             </div>
             <div class="card-body table-full-width table-responsive p-5">
                 <table class="table table-hover table-striped tables" style="width: 100%">
                     <thead>
                         <tr>
+                            <th><input type="checkbox" class="check_all"></th>
                             <th>No</th>
                             <th>Nama Kategori</th>
                             <th>Aksi</th>
@@ -73,8 +45,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-link btn-secondary btn-fill" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-link btn-info btn-fill">Save changes</button>
+                    <button type="button" class="btn btn-link btn-secondary btn-fill" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-link btn-info btn-fill">Simpan</button>
                 </form>
             </div>
         </div><!-- /.modal-content -->
