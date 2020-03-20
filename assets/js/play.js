@@ -11,14 +11,28 @@ function time() {
 	document.getElementById('time').textContent = now;
 }
 
-function cek() {
+function get(parameterName) {
+	var result = null,
+	tmp = [];
+	location.search
+	.substr(1)
+	.split("&")
+	.forEach(function (item) {
+		tmp = item.split("=");
+		if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+	});
+	return result;
+}
 
-	var time = document.getElementById('time').textContent;
+function cek() {
 
 	$.ajax({
 		url : '../../proses/check.php',
 		type: 'post',
-		data: { jam : time },
+		data: { 
+			"jam" : $('#time').text(),
+			"tipe" : get("tipe")
+		},
 		success : function (data){
 			if (data != '') {
 				$("#response").html(data)

@@ -326,7 +326,7 @@
         var pTablejadwal = $('#tables-jadwal').DataTable({
             "serverSide" : true,
             "processing" : true,
-            "ajax" : "../proses/jadwal/get_all_jadwal.php?hari="+get("hari"),
+            "ajax" : "../proses/jadwal/get_all_jadwal.php?hari=" + get("hari") + "&tipe=" + get("page"),
             "columns" : [
             { 
                 data : "kd_jadwal",
@@ -380,13 +380,13 @@
                 return 
             }
 
-            hapus("jadwal&hari="+get("hari"), $(this).attr("href"), 'deleted', true, kd)
+            hapus(get("page") + "&hari=" + get("hari"), $(this).attr("href"), 'deleted', true, kd)
         })
 
         $(document).on('click', '.hapus-jadwal', function(e){
             e.preventDefault();
             var url = $(this).attr('href')
-            hapus('jadwal&hari='+get("hari"), url, 'deleted')
+            hapus(get("page") + "&hari=" + get("hari"), url, 'deleted')
         })
 
         $('.tambah-jadwal').click(function(){
@@ -395,7 +395,7 @@
             $('.kd_audio').val('pilih_audio')
             $('.kd_kategori').val('pilih_kategori')
             $('.kd_jam').val('pilih_jam')
-            $('.form-jadwal').attr('action', '../proses/jadwal/add_jadwal.php?hari='+get('hari'))
+            $('.form-jadwal').attr('action', '../proses/jadwal/add_jadwal.php?hari='+get('hari')+ "&tipe=" + get("page"))
         })
 
         $(document).on('click', '.edit-jadwal', function(){
@@ -412,12 +412,13 @@
                     $('.kd_kategori').val(data.kd_kategori)
                     $('.kd_jam').val(data.kd_jam)
                     $('.hari').val(data.hari)
+                    $('.tipe').val(data.tipe)
                 }
             })
         })
 
         $('.pilih_hari').change(function(){
-            window.location.href = 'index.php?page=jadwal&hari=' + $(this).val()
+            window.location.href = 'index.php?page='+get("page")+'&hari=' + $(this).val()
         })
         // ====================================================================
         //                      PAGES/JADWAL.PHP END

@@ -5,6 +5,7 @@ require '../../config/config.php';
 require('../../config/ssp.class.php');
 
 $hari = mysqli_real_escape_string($conn, $_GET['hari']);
+$tipe = mysqli_real_escape_string($conn, $_GET['tipe']);
 
 $table = <<<EOT
  (
@@ -18,7 +19,11 @@ $table = <<<EOT
     INNER JOIN tb_kategori b ON a.kd_kategori = b.kd_kategori
     INNER JOIN tb_audio c ON a.kd_audio = c.kd_audio
     INNER JOIN tb_jam d ON a.kd_jam = d.kd_jam
-    WHERE a.hari = '$hari'
+    WHERE 
+    a.hari = '$hari'
+    AND
+    a.tipe = '$tipe'
+
  ) temp
 EOT;
 

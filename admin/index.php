@@ -38,11 +38,21 @@ if ($page == "ubah password") {
 }
 
 if ($page == "jadwal") {
-	if (!isset($_GET['hari'])) {
-		echo "<script>window.location.href = 'index.php?page=jadwal&hari=Senin' </script>";
-	}
 	require 'pages/jadwal.php';
+}
 
+if ($page == "harian") {
+	if (!isset($_GET['hari'])) {
+		echo "<script> window.location.href = 'index.php?page=harian&hari=Senin' </script>";
+	}
+	require 'pages/harian.php';
+}
+
+if ($page == "ujian") {
+	if (!isset($_GET['hari'])) {
+		echo "<script> window.location.href = 'index.php?page=ujian&hari=Senin' </script>";
+	}
+	require 'pages/ujian.php';
 }
 
 require 'footer.php';

@@ -7,7 +7,10 @@ if (!isset($_SESSION['login'])) {
   exit();
 }
 
- ?>
+$tipe = $_GET["tipe"];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,7 +97,7 @@ if (!isset($_SESSION['login'])) {
                   <?php 
                     $no=1; 
                     $today = hari_ini(); 
-                    foreach(query("SELECT * FROM tb_jadwal JOIN tb_kategori USING(kd_kategori) JOIN tb_audio USING(kd_audio) JOIN tb_jam USING(kd_jam) WHERE hari = '$today' ") as $row): ?>
+                    foreach(query("SELECT * FROM tb_jadwal JOIN tb_kategori USING(kd_kategori) JOIN tb_audio USING(kd_audio) JOIN tb_jam USING(kd_jam) WHERE hari = '$today' AND tipe = '$tipe' ") as $row): ?>
                     <tr>
                       <td><?php echo $no++ ?></td>
                       <td><?php echo $row['nm_kategori'] ?></td>
