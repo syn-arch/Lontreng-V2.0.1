@@ -61,7 +61,7 @@
 
 </body>
 <script src="vendor/material-kit/assets/js/core/jquery.min.js"></script>
-<script src="vendor/sweetalert2.js"></script>
+<script src="vendor/sweetalert2/sweetalert2.js"></script>
 <script>
   $(function(){
     $("#my-form").submit(function(e){

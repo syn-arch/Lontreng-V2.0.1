@@ -22,4 +22,12 @@ if ($page == "audio") {
 	require 'pages/audio.php';
 }
 
+if ($page == "jadwal") {
+	if (!isset($_GET['hari'])) {
+		echo "<script>window.location.href = 'index.php?page=jadwal&hari=Senin' </script>";
+	}
+	require 'pages/jadwal.php';
+
+}
+
 require 'footer.php';

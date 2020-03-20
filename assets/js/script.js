@@ -32,6 +32,27 @@
             })
         }
 
+        $(".check_all").click(function(){
+            if (this.checked) {
+                $(".data_checkbox").prop("checked", true)
+            }else{
+                $(".data_checkbox").prop("checked", false)
+            }
+        })
+
+        function get(parameterName) {
+            var result = null,
+                tmp = [];
+            location.search
+                .substr(1)
+                .split("&")
+                .forEach(function (item) {
+                  tmp = item.split("=");
+                  if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+                });
+            return result;
+        }
+
         // ====================================================================
         //                      PAGES/KATEGORI.PHP START
         // ====================================================================
@@ -71,15 +92,6 @@
                 cell.innerHTML = start+i+1;
             } );
         } ).draw();
-
-
-        $(".check_all").click(function(){
-            if (this.checked) {
-                $(".data_checkbox").prop("checked", true)
-            }else{
-                $(".data_checkbox").prop("checked", false)
-            }
-        })
 
         $(".mass-hapus-kategori").click(function(e){
             e.preventDefault();
@@ -176,15 +188,6 @@
             } );
         } ).draw();
 
-
-        $(".check_all").click(function(){
-            if (this.checked) {
-                $(".data_checkbox").prop("checked", true)
-            }else{
-                $(".data_checkbox").prop("checked", false)
-            }
-        })
-
         $(".mass-hapus-audio").click(function(e){
             e.preventDefault();
             var kd = [];
@@ -228,6 +231,109 @@
         })
         // ====================================================================
         //                      PAGES/AUDIO.PHP END
+        // ====================================================================
+
+        // ====================================================================
+        //                      PAGES/JADWAL.PHP START
+        // ====================================================================
+        var pTablejadwal = $('#tables-jadwal').DataTable({
+            "serverSide" : true,
+            "processing" : true,
+            "ajax" : "../proses/jadwal/get_all_jadwal.php?hari="+get("hari"),
+            "columns" : [
+            { 
+                data : "kd_jadwal",
+                orderable : false,
+                "render" : function(data, type, full){
+                    return `<input class="data_checkbox" type="checkbox" name="kd_jadwal[]" value=`+ data +`>`;
+                }
+            },
+            { data : null },
+            { data : "nm_kategori" },
+            { 
+                data : "audio",
+                orderable : false,
+                "render" : function(data, type, full){
+                    return `<audio controls>
+                                <source src="../assets/audio/`+ data +`" type="audio/mp3">
+                            </audio>`;
+                }
+            },
+            { data : "jam" },
+            {
+                data : "kd_jadwal",
+                orderable : false,
+                "render" : function(data, type, full){
+                    return `<a class="btn btn-warning btn-fill edit-jadwal" href='#modal-jadwal' data-toggle="modal" data-id=` + data + `>` + `Ubah` + `</a> &nbsp; 
+                            <a class="btn btn-danger btn-fill hapus-jadwal" href=../proses/jadwal/delete_jadwal.php?kd=` + data + `>` + `Hapus` + `</a>`;
+                    
+                }
+            }
+            ],
+            dom: 'Bfrtip',
+            buttons: ['copyHtml5','excelHtml5','csvHtml5','pdfHtml5']
+        })
+
+        pTablejadwal.on('order.dt search.dt draw.dt', function () {
+            var start = pTablejadwal.page.info().start;
+            var info = pTablejadwal.page.info();
+            pTablejadwal.column(1, {order:'applied'}).nodes().each( function (cell, i) {
+                cell.innerHTML = start+i+1;
+            } );
+        } ).draw();
+
+        $(".mass-hapus-jadwal").click(function(e){
+            e.preventDefault();
+            var kd = [];
+            $(':checkbox:checked').each(function(i){
+                kd[i] = $(this).val();
+            });
+            if (kd.length == 0) {
+                 Swal.fire('Gagal','Anda belum memilih data!','warning')
+                return 
+            }
+
+            hapus("jadwal&hari="+get("hari"), $(this).attr("href"), 'deleted', true, kd)
+        })
+
+        $(document).on('click', '.hapus-jadwal', function(e){
+            e.preventDefault();
+            var url = $(this).attr('href')
+            hapus('jadwal&hari='+get("hari"), url, 'deleted')
+        })
+
+        $('.tambah-jadwal').click(function(){
+            $('.modal-title').text('Tambah Data')
+            $('.nm_jadwal').val('')
+            $('.kd_audio').val('pilih_audio')
+            $('.kd_kategori').val('pilih_kategori')
+            $('.kd_jam').val('pilih_jam')
+            $('.form-jadwal').attr('action', '../proses/jadwal/add_jadwal.php?hari='+get('hari'))
+        })
+
+        $(document).on('click', '.edit-jadwal', function(){
+            var kd = $(this).data('id')
+            $('.modal-title').text('Edit Data')
+            $('.form-jadwal').attr('action', '../proses/jadwal/update_jadwal.php')
+
+            $.ajax({
+                url : '../proses/jadwal/get_jadwal.php?kd='+kd,
+                success : function(datas){
+                    var data = JSON.parse(datas)
+                    $('.kd_jadwal').val(data.kd_jadwal)
+                    $('.kd_audio').val(data.kd_audio)
+                    $('.kd_kategori').val(data.kd_kategori)
+                    $('.kd_jam').val(data.kd_jam)
+                    $('.hari').val(data.hari)
+                }
+            })
+        })
+
+        $('.pilih_hari').change(function(){
+            window.location.href = 'index.php?page=jadwal&hari=' + $(this).val()
+        })
+        // ====================================================================
+        //                      PAGES/JADWAL.PHP END
         // ====================================================================
 
   })
