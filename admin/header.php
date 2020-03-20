@@ -23,7 +23,7 @@ if (!isset($_SESSION['login'])) {
     <link href="../vendor/light-bootstrap/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../vendor/light-bootstrap/assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
     <link rel="stylesheet" href="../vendor/datatables/datatables.min.css">
-    <script src="../vendor/sweetalert2.js"></script>
+    <script src="../vendor/sweetalert2/sweetalert2.js"></script>
 
 </head>
 

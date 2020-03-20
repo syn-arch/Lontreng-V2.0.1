@@ -18,4 +18,8 @@ if ($page == "kategori") {
 	require 'pages/kategori.php';
 }
 
+if ($page == "audio") {
+	require 'pages/audio.php';
+}
+
 require 'footer.php';

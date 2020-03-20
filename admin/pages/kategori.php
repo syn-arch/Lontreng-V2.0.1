@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="card-body table-full-width table-responsive p-5">
-                <table class="table table-hover table-striped tables" style="width: 100%">
+                <table class="table table-hover table-striped" id="tables-kategori" style="width: 100%">
                     <thead>
                         <tr>
                             <th><input type="checkbox" class="check_all"></th>
