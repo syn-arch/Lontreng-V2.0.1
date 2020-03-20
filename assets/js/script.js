@@ -141,6 +141,93 @@
         // ====================================================================
 
         // ====================================================================
+        //                      PAGES/JAM.PHP START
+        // ====================================================================
+        var pTable = $('#tables-jam').DataTable({
+            "serverSide" : true,
+            "processing" : true,
+            "ajax" : "../proses/jam/get_all_jam.php",
+            "columns" : [
+            { 
+                data : "kd_jam",
+                orderable : false,
+                "render" : function(data, type, full){
+                    var el = `<input class="data_checkbox" type="checkbox" name="kd_jam[]" value=`+ data +`>`;
+                    return el;
+                }
+            },
+            { data : null },
+            { data : "jam" },
+            {
+                data : "kd_jam",
+                orderable : false,
+                "render" : function(data, type, full){
+                    var el = `<a class="btn btn-warning btn-fill edit-jam" href='#modal-jam' data-toggle="modal" data-id=` + data + `>` + `Ubah` + `</a> &nbsp;`;
+                    el += `<a class="btn btn-danger btn-fill hapus-jam" href=../proses/jam/delete_jam.php?kd=` + data + `>` + `Hapus` + `</a>`;
+                    return el;
+                }
+            }
+            ],
+            dom: 'Bfrtip',
+            buttons: ['copyHtml5','excelHtml5','csvHtml5','pdfHtml5']
+        })
+
+        pTable.on('order.dt search.dt draw.dt', function () {
+            var start = pTable.page.info().start;
+            var info = pTable.page.info();
+            pTable.column(1, {order:'applied'}).nodes().each( function (cell, i) {
+                cell.innerHTML = start+i+1;
+            } );
+        } ).draw();
+
+        $(".mass-hapus-jam").click(function(e){
+            e.preventDefault();
+
+            var kd = [];
+   
+            $(':checkbox:checked').each(function(i){
+                kd[i] = $(this).val();
+            });
+
+            if (kd.length == 0) {
+                 Swal.fire('Gagal','Anda belum memilih data!','warning')
+                return 
+            }
+
+            hapus("jam", $(this).attr("href"), 'deleted', true, kd)
+        })
+
+        $(document).on('click', '.hapus-jam', function(e){
+            e.preventDefault();
+            var url = $(this).attr('href')
+            hapus('jam', url, 'deleted')
+        })
+
+          $('.tambah-jam').click(function(){
+            $('.modal-title').text('Tambah Data')
+            $('.jam').val('')
+            $('.form-jam').attr('action', '../proses/jam/add_jam.php')
+        })
+
+        $(document).on('click', '.edit-jam', function(){
+            var kd = $(this).data('id')
+            $('.modal-title').text('Edit Data')
+            $('.form-jam').attr('action', '../proses/jam/update_jam.php')
+
+            $.ajax({
+                url : '../proses/jam/get_jam.php?kd='+kd,
+                success : function(datas){
+                    var data = JSON.parse(datas)
+                    $('.kd_jam').val(data.kd_jam)
+                    $('.jam').val(data.jam)
+                }
+            })
+        })
+        // ====================================================================
+        //                      PAGES/JAM.PHP END
+        // ====================================================================
+
+        // ====================================================================
         //                      PAGES/AUDIO.PHP START
         // ====================================================================
         var pTableAudio = $('#tables-audio').DataTable({
