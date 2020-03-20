@@ -26,6 +26,10 @@ if ($page == "jam") {
 	require 'pages/jam.php';
 }
 
+if ($page == "import database") {
+	require 'pages/import.php';
+}
+
 if ($page == "start") {
 	require 'pages/start.php';
 }

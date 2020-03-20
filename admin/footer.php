@@ -35,4 +35,5 @@
 <script src="../vendor/datatables/JSZip-2.5.0/jszip.min.js"></script>
 <!-- own script -->
 <script src="../assets/js/script.js"></script>
+<script src="../vendor/light-bootstrap/assets/js/demo.js"></script>
 </html>

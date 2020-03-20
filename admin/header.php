@@ -22,14 +22,14 @@ if (!isset($_SESSION['login'])) {
     <!-- CSS Files -->
     <link href="../vendor/light-bootstrap/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../vendor/light-bootstrap/assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
-    <link rel="stylesheet" href="../vendor/datatables/datatables.min.css">
+    <link href="../vendor/datatables/datatables.min.css" rel="stylesheet" >
+    <link href="../vendor/light-bootstrap/assets/css/demo.css" rel="stylesheet" />
     <script src="../vendor/sweetalert2/sweetalert2.js"></script>
-
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-image="../vendor/light-bootstrap/assets/img/sidebar-5.jpg">
+        <div class="sidebar" data-image="../vendor/light-bootstrap/assets/img/sidebar-4.jpg">
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
@@ -42,6 +42,12 @@ if (!isset($_SESSION['login'])) {
                         <a class="nav-link" href="index.php?page=dashboard">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.php" target="_blank">
+                            <i class="nc-icon nc-send"></i>
+                            <p>Lihat Website</p>
                         </a>
                     </li>
                     <li class="nav-item <?php echo $page == 'start' ? 'active' : '' ?>">
@@ -84,6 +90,18 @@ if (!isset($_SESSION['login'])) {
                         <a class="nav-link" href="index.php?page=ubah password">
                             <i class="nc-icon nc-key-25"></i>
                             <p>Ubah Password</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../proses/export_database.php" target="_blank">
+                            <i class="nc-icon nc-cloud-upload-94"></i>
+                            <p>Export Database</p>
+                        </a>
+                    </li>
+                    <li class="nav-item <?php echo $page == 'import database' ? 'active' : '' ?>">
+                        <a class="nav-link" href="index.php?page=import database">
+                            <i class="nc-icon nc-cloud-download-93"></i>
+                            <p>Import Database</p>
                         </a>
                     </li>
                     <li class="nav-item">
