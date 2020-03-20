@@ -6,6 +6,7 @@
                 <hr>
             </div>
             <div class="card-body">
+                <div class="text-center"> <i class="nc-icon nc-preferences-circle-rotate" style="font-size: 80px"></i></div>
                 <h5>Atur jadwal</h5>
                 <p>
                     Memiliki Kategori Jadwal Bel. Jadwal dapat diatur berdasarkan kategori semisal untuk kategori harian, kategori tes (Ulangan Umum). Sehingga ketika sedang waktu Ulangan Umum (misalnya), tidak perlu menghapus dan mengganti jadwal bel harian, tetapi cukup dengan berganti kategori saja. Ketika masa ulangan telah berakhir, dapat berganti kembali ke kategori reguler tanpa harus menghapus dan setting ulang.
@@ -21,6 +22,7 @@
                 <hr>
             </div>
             <div class="card-body">
+                <div class="text-center"> <i class="nc-icon nc-preferences-circle-rotate" style="font-size: 80px"></i></div>
                 <h5>Atur Jadwal</h5>
                 <p>
                     Atur Jadwal Aplikasi Bel Sekolah Otomatis ini digunakan untuk mengatur jam belajar di sekolah. Silahkan anda melakukan pengaturan jadwal yang disesuaikan dengan jadwal Kegiatan Belajar Mengajar (KBM) disekolah anda. 

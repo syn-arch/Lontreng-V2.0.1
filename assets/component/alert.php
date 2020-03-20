@@ -34,9 +34,7 @@
         <script>
             Swal.fire({
               icon: 'warning',
-              title: 'Password baru dan konfirmasi password baru tidak sama!',
-              showConfirmButton: false,
-              timer: 1500
+              title: 'Password baru dan konfirmasi password baru tidak sama!'
           })
       </script>
     <?php endif ?>
@@ -44,9 +42,7 @@
         <script>
             Swal.fire({
               icon: 'error',
-              title: 'Password lama salah!',
-              showConfirmButton: false,
-              timer: 1500
+              title: 'Password lama salah!'
           })
       </script>
     <?php endif ?>

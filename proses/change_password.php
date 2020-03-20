@@ -8,6 +8,7 @@ $pw2 = mysqli_real_escape_string($conn, $_POST['pw2']);
 
 if ($pw1 != $pw2) {
 	header("Location: ../admin/index.php?page=ubah password&msg=not_match");
+	exit();
 }
 
 $id = $_SESSION['kd_user'];
@@ -15,6 +16,7 @@ $pw_user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM tb_user WHERE i
 
 if (md5($pw_lama) != $pw_user) {
 	header("Location: ../admin/index.php?page=ubah password&msg=old_pw_wrong");
+	exit();
 }
 
 $new = md5($pw1);
@@ -22,4 +24,5 @@ $result = mysqli_query($conn, "UPDATE tb_user SET password = '$new' WHERE id = $
 
 if ($result) {
 	header("Location: ../admin/index.php?page=ubah password&msg=updated");
+	exit();
 }

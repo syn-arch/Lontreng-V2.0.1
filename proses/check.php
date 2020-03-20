@@ -10,7 +10,7 @@ $jadwal = query("SELECT * FROM tb_jadwal JOIN tb_kategori USING(kd_kategori) JOI
 $skrg = hari_ini();
 
 if (empty($jadwal)) {
-	echo '<h1 class="text-center">Jadwal Kosong</h1>';
+	echo '<h1>Jadwal Kosong</h1>';
 	die;
 }
 
