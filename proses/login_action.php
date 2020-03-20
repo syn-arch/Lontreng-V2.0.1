@@ -19,7 +19,6 @@ if ($result->num_rows > 0) {
 	$_SESSION['login'] = true;
 	$_SESSION['kd_user'] = $user['id'];
 	$_SESSION['nm_user'] = $user['nm_user'];
-	$_SESSION['level'] = $user['level'];
 
 	$data['status'] = "ok";
 	$data['message'] = "Login berhasil";

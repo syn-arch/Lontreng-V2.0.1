@@ -26,6 +26,17 @@ if ($page == "jam") {
 	require 'pages/jam.php';
 }
 
+if ($page == "start") {
+	require 'pages/start.php';
+}
+
+if ($page == "profile saya") {
+	require 'pages/profile.php';
+}
+if ($page == "ubah password") {
+	require 'pages/ubah_password.php';
+}
+
 if ($page == "jadwal") {
 	if (!isset($_GET['hari'])) {
 		echo "<script>window.location.href = 'index.php?page=jadwal&hari=Senin' </script>";

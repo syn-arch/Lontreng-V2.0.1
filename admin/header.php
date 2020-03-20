@@ -44,6 +44,12 @@ if (!isset($_SESSION['login'])) {
                             <p>Dashboard</p>
                         </a>
                     </li>
+                    <li class="nav-item <?php echo $page == 'start' ? 'active' : '' ?>">
+                        <a class="nav-link" href="index.php?page=start">
+                            <i class="nc-icon nc-button-play"></i>
+                            <p>START</p>
+                        </a>
+                    </li>
                     <li class="nav-item <?php echo $page == 'kategori' ? 'active' : '' ?>">
                         <a class="nav-link" href="index.php?page=kategori">
                             <i class="nc-icon nc-bullet-list-67"></i>

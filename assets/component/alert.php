@@ -30,4 +30,24 @@
           })
       </script>
     <?php endif ?>
+    <?php if ($msg == 'not_match'): ?>
+        <script>
+            Swal.fire({
+              icon: 'warning',
+              title: 'Password baru dan konfirmasi password baru tidak sama!',
+              showConfirmButton: false,
+              timer: 1500
+          })
+      </script>
+    <?php endif ?>
+    <?php if ($msg == 'old_pw_wrong'): ?>
+        <script>
+            Swal.fire({
+              icon: 'warning',
+              title: 'Password lama salah!',
+              showConfirmButton: false,
+              timer: 1500
+          })
+      </script>
+    <?php endif ?>
 <?php endif ?>

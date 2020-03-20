@@ -56,7 +56,7 @@
         // ====================================================================
         //                      PAGES/KATEGORI.PHP START
         // ====================================================================
-        var pTable = $('#tables-kategori').DataTable({
+        var pTablekategori = $('#tables-kategori').DataTable({
             "serverSide" : true,
             "processing" : true,
             "ajax" : "../proses/kategori/get_all_kategori.php",
@@ -85,10 +85,10 @@
             buttons: ['copyHtml5','excelHtml5','csvHtml5','pdfHtml5']
         })
 
-        pTable.on('order.dt search.dt draw.dt', function () {
-            var start = pTable.page.info().start;
-            var info = pTable.page.info();
-            pTable.column(1, {order:'applied'}).nodes().each( function (cell, i) {
+        pTablekategori.on('order.dt search.dt draw.dt', function () {
+            var start = pTablekategori.page.info().start;
+            var info = pTablekategori.page.info();
+            pTablekategori.column(1, {order:'applied'}).nodes().each( function (cell, i) {
                 cell.innerHTML = start+i+1;
             } );
         } ).draw();
@@ -143,7 +143,7 @@
         // ====================================================================
         //                      PAGES/JAM.PHP START
         // ====================================================================
-        var pTable = $('#tables-jam').DataTable({
+        var pTableJam = $('#tables-jam').DataTable({
             "serverSide" : true,
             "processing" : true,
             "ajax" : "../proses/jam/get_all_jam.php",
@@ -172,10 +172,10 @@
             buttons: ['copyHtml5','excelHtml5','csvHtml5','pdfHtml5']
         })
 
-        pTable.on('order.dt search.dt draw.dt', function () {
-            var start = pTable.page.info().start;
-            var info = pTable.page.info();
-            pTable.column(1, {order:'applied'}).nodes().each( function (cell, i) {
+        pTableJam.on('order.dt search.dt draw.dt', function () {
+            var start = pTableJam.page.info().start;
+            var info = pTableJam.page.info();
+            pTableJam.column(1, {order:'applied'}).nodes().each( function (cell, i) {
                 cell.innerHTML = start+i+1;
             } );
         } ).draw();
