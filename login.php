@@ -1,6 +1,17 @@
+<?php
+
+require 'config/config.php';
+
+if (isset($_SESSION['login'])) {
+  header("Location: admin/index.php?page=dashboard");
+  exit();
+}
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
