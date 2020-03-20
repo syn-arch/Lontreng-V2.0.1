@@ -43,8 +43,28 @@
     <?php if ($msg == 'old_pw_wrong'): ?>
         <script>
             Swal.fire({
-              icon: 'warning',
+              icon: 'error',
               title: 'Password lama salah!',
+              showConfirmButton: false,
+              timer: 1500
+          })
+      </script>
+    <?php endif ?>
+    <?php if ($msg == 'imported'): ?>
+        <script>
+            Swal.fire({
+              icon: 'success',
+              title: 'Database berhasil diimport!',
+              showConfirmButton: false,
+              timer: 1500
+          })
+      </script>
+    <?php endif ?>
+    <?php if ($msg == 'error'): ?>
+        <script>
+            Swal.fire({
+              icon: 'error',
+              title: 'Error!',
               showConfirmButton: false,
               timer: 1500
           })

@@ -80,18 +80,6 @@ if (!isset($_SESSION['login'])) {
                             <p>Data Jadwal Bell</p>
                         </a>
                     </li>
-                    <li class="nav-item <?php echo $page == 'profile saya' ? 'active' : '' ?>">
-                        <a class="nav-link" href="index.php?page=profile saya">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p>Profil Saya</p>
-                        </a>
-                    </li>
-                    <li class="nav-item <?php echo $page == 'ubah password' ? 'active' : '' ?>">
-                        <a class="nav-link" href="index.php?page=ubah password">
-                            <i class="nc-icon nc-key-25"></i>
-                            <p>Ubah Password</p>
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../proses/export_database.php" target="_blank">
                             <i class="nc-icon nc-cloud-upload-94"></i>
@@ -102,6 +90,18 @@ if (!isset($_SESSION['login'])) {
                         <a class="nav-link" href="index.php?page=import database">
                             <i class="nc-icon nc-cloud-download-93"></i>
                             <p>Import Database</p>
+                        </a>
+                    </li>
+                     <li class="nav-item <?php echo $page == 'profile saya' ? 'active' : '' ?>">
+                        <a class="nav-link" href="index.php?page=profile saya">
+                            <i class="nc-icon nc-circle-09"></i>
+                            <p>Profil Saya</p>
+                        </a>
+                    </li>
+                    <li class="nav-item <?php echo $page == 'ubah password' ? 'active' : '' ?>">
+                        <a class="nav-link" href="index.php?page=ubah password">
+                            <i class="nc-icon nc-key-25"></i>
+                            <p>Ubah Password</p>
                         </a>
                     </li>
                     <li class="nav-item">
