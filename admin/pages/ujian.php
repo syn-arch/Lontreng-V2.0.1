@@ -6,7 +6,7 @@
             <div class="card-header ">
                 <div class="row">
                     <div class="col-md-6">
-                        <h4 class="card-title pull-left">Data jadwal (Ujian)</h4>
+                        <h4 class="card-title pull-left">Data jadwal (Ujian) : <?php echo $_GET['hari'] ?></h4>
                         <br>
                         <br>
                         <select name="hari" id="hari" class="form-control pilih_hari">

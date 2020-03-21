@@ -2,8 +2,8 @@
 
 require '../config/config.php';
 
-$time = $_GET['jam'];
-$tipe = $_GET['tipe'];
+$time = $_POST['jam'];
+$tipe = $_POST['tipe'];
 
 $jadwal = query("SELECT * FROM tb_jadwal JOIN tb_kategori USING(kd_kategori) JOIN tb_audio USING(kd_audio) JOIN tb_jam USING(kd_jam) WHERE tipe = '$tipe' ");
 

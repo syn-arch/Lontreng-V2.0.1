@@ -23,7 +23,7 @@ $tipe = $_GET["tipe"];
   <!-- CSS Files -->
   <link href="../../vendor/material-kit/assets/css/material-kit.min.css" rel="stylesheet" />
 </head>
-<body class="landing-page sidebar-collapse">
+<body class="landing-page sidebar-collapse" onload="max()">
   <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
     <div class="container">
       <div class="navbar-translate">
@@ -66,7 +66,7 @@ $tipe = $_GET["tipe"];
           <br>
           <audio id="audio" controls=""></audio>
           <br>
-          <a href="tes.html" class="btn btn-danger btn-raised btn-lg play">
+          <a href="#" onclick="window.close()" class="btn btn-danger btn-raised btn-lg">
             <i class="fa fa-stop"></i>&nbsp; STOP LONTRENG
           </a>
         </div>

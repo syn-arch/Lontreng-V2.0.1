@@ -1,5 +1,13 @@
 $(function(){
 
+	if (document.fullscreenEnabled) {
+		document.documentElement.requestFullscreen();
+	}
+
+	if (document.exitFullscreen) {
+		document.documentElement.requestFullscreen();
+	}
+
 	$("#audio").hide()
 
 	function time() {
@@ -49,14 +57,7 @@ $(function(){
 			}
 		});
 	}
-
-	$('.play').click(function(e){
-		e.preventDefault()
-		console.log('ngens')
-		document.getElementById('audio').play();
-	})
-
-
+	
 	setInterval(function(){
 		time()
 		cek()
