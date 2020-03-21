@@ -64,11 +64,22 @@ $tipe = $_GET["tipe"];
           <h1 id="time" style="font-size: 120px"></h1>
           <h4><b>Insanity</b>: doing the same thing over and over again and expecting different results. - Albert Einstein</h4>
           <br>
-          <div id="response"></div>
+          <audio id="audio" controls=""></audio>
           <br>
-          <a href="#" onclick="window.close()" class="btn btn-danger btn-raised btn-lg">
+          <a href="tes.html" class="btn btn-danger btn-raised btn-lg play">
             <i class="fa fa-stop"></i>&nbsp; STOP LONTRENG
           </a>
+        </div>
+        <div class="col-md-6">
+          <h4 class="mt-5">Sekarang</h4>
+          <h1 id="jadwal" style="font-size: 50px"></h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6" style="transform: translateY(-150px);">
+          <h4 class="mt-5">Selanjutnya</h4>
+          <h1 id="next" style="font-size: 50px"></h1>
         </div>
       </div>
     </div>
