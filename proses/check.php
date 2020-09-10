@@ -38,7 +38,11 @@ if (in_array_r($skrg, $jadwal) && in_array_r($time, $jadwal)) {
 
 	$result_next = query($query_next);
 
-	$data['next'] = $result_next[0]['nm_kategori'];
+	if ($result_next) {
+		$data['next'] = $result_next[0]['nm_kategori'];
+	}else{
+		$data['next'] = "Kosong";
+	}
 
 	echo json_encode($data);
 
